@@ -1,5 +1,5 @@
 <section class="left-side-menu">
-    <span class="logo">
+    <span class="logo" [routerLink]="'/'" routerLinkActive="active">
         <span class="logo-img">
             <img src="assets/logo-green.png" alt="logo">
             <img src="assets/logo-dark-green.png" alt="logo">
@@ -11,14 +11,14 @@
     <div class="main-menu">
         <span class="title"> Main Menu</span>
         <span class="list">
-            <a class="active">
+            <a [routerLink]="'/dashboard'" routerLinkActive="active">
                 <img src="assets/icons/dashboard-icon-active.svg" alt="icon">
                 <span class="tab">Dashboard</span>
             </a>
-            <a>
+            <!-- <a>
                 <img src="assets/icons/dashboard-icon.svg" alt="icon">
                 <span class="tab">Dashboard</span>
-            </a>
+            </a> -->
 
             <span class="horisontal-line"></span>
         </span>

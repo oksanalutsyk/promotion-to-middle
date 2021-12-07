@@ -1,5 +1,8 @@
-<app-header></app-header>
-<app-left-side-menu></app-left-side-menu>
-<main>Hello world</main>
+<div class="main-container" [ngClass]="{'isFullScreen': isLoggedIn}">
+    <app-header *ngIf="isLoggedIn"></app-header>
+    <app-left-side-menu *ngIf="isLoggedIn"></app-left-side-menu>
 
-<router-outlet></router-outlet>
+    <main [ngClass]="{'isFullScreen': !isLoggedIn}">
+        <router-outlet></router-outlet>
+    </main>
+</div>

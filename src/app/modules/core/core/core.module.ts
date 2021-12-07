@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from '../modules/material/material.module';
 
@@ -14,7 +15,8 @@ import { LeftSideMenuComponent } from '../components/left-side-menu/left-side-me
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    RouterModule
   ],
   exports:[
     HeaderComponent,
