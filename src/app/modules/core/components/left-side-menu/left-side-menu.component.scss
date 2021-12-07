@@ -1,0 +1,97 @@
+@import "../../../../../assets/styles/variables";
+
+.left-side-menu {
+  display: grid;
+  grid-template-rows: 75px 1fr;
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid $light-grey-primary-color;
+    border-bottom: 1px solid $light-grey-primary-color;
+    span {
+      font-size: 20px;
+      margin-left: 5px;
+    }
+    .logo-img {
+      position: relative;
+      img {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(0, -50%);
+      }
+    }
+  }
+  .main-menu {
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      color: $inactive-state-color;
+      margin: 20px 20px 20px 35px;
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      a {
+        height: 20px;
+        padding-left: 35px;
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+        color: $inactive-state-color;
+        border-left: 1px solid transparent;
+        img {
+          margin-right: 18px;
+        }
+
+        &.active {
+          border-left: 1px solid $status-color;
+          color: $status-color;
+        }
+        &:not(:last-child) {
+          margin-bottom: 5px;
+        }
+      }
+    }
+    .horisontal-line {
+      height: 1px;
+      margin: 30px 20px;
+      background-color: $light-grey-primary-color;
+    }
+  }
+
+  button {
+    &.logout {
+      margin: 0 20px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 3px;
+      background-color: $input-color;
+      img {
+        margin-right: 10px;
+      }
+      span {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 16px;
+        color: $black-color;
+      }
+    }
+    &:hover {
+      background-color: rgba(46, 91, 255, 0.04);
+      span {
+        color: $status-color;
+      }
+    }
+  }
+}

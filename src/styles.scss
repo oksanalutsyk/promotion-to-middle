@@ -1,7 +1,15 @@
+@import './assets/styles/variables';
+
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto';
 }
 
 a, button {
@@ -36,7 +44,6 @@ app-root {
    }
 
    app-left-side-menu {
-    background-color: #6DFDDF; 
     grid-row-start: 1;
     grid-column-start: 1;
  
@@ -54,3 +61,5 @@ app-root {
     grid-column-end: 3;
    }
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

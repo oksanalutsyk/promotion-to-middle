@@ -8,6 +8,11 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './modules/core/components/header/header.component';
 import { LeftSideMenuComponent } from './modules/core/components/left-side-menu/left-side-menu.component';
 
+// modules
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './modules/core/modules/material/material.module';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +21,9 @@ import { LeftSideMenuComponent } from './modules/core/components/left-side-menu/
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
