@@ -1,29 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
+import { CoreModule } from './modules/core/core/core.module';
+
 import { AppComponent } from './app.component';
-
-// components
-import { HeaderComponent } from './modules/core/components/header/header.component';
-import { LeftSideMenuComponent } from './modules/core/components/left-side-menu/left-side-menu.component';
-
-// modules
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './modules/core/modules/material/material.module';
-
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    LeftSideMenuComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
