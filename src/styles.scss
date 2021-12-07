@@ -1,1 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a, button {
+  cursor: pointer;
+}
+
+button {
+  outline: none;
+  border: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+app-root {
+   display: grid; 
+   grid-template-rows: 75px 1fr;
+   grid-template-columns: 230px 1fr ;
+   
+   gap: 0px;
+   height: 100vh;
+
+   app-header {
+    background-color: #BA9C5D; 
+    grid-row-start: 1;
+    grid-column-start: 2;
+ 
+    grid-row-end: 2;
+    grid-column-end: 3;
+   }
+
+   app-left-side-menu {
+    background-color: #6DFDDF; 
+    grid-row-start: 1;
+    grid-column-start: 1;
+ 
+    grid-row-end: 3;
+    grid-column-end: 2;
+    
+ 
+   }
+   main {
+    background-color: #D87DD7; 
+    grid-row-start: 2;
+    grid-column-start: 2;
+ 
+    grid-row-end: 3;
+    grid-column-end: 3;
+   }
+}
