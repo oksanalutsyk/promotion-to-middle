@@ -48,13 +48,20 @@
         line-height: 16px;
         color: $inactive-state-color;
         border-left: 1px solid transparent;
-        img {
+
+        svg {
           margin-right: 18px;
+          fill: $inactive-state-color;
         }
 
         &.active {
           border-left: 1px solid $status-color;
           color: $status-color;
+          svg {
+            margin-right: 18px;
+            fill: $status-color;
+          }
+  
         }
         &:not(:last-child) {
           margin-bottom: 5px;
