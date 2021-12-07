@@ -14,6 +14,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
+  { path: '**', redirectTo: '' },
+
 ];
 
 @NgModule({
