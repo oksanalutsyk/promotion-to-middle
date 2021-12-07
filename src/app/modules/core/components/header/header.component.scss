@@ -1,0 +1,26 @@
+@import "../../../../../assets/styles/variables";
+
+header {
+  display: grid;
+  padding: 15px 35px;
+  grid-template-columns: 1fr 1fr 1fr;
+  .search {
+    position: relative;
+    width: 100%;
+    mat-icon {
+      position: absolute;
+      left: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $secondary-text-color;
+    }
+    input {
+      border-radius: 200px;
+      border: none;
+      outline: none;
+      background-color: $input-color;
+      padding: 15px 30px 15px 65px;
+      width: 100%;
+    }
+  }
+}
