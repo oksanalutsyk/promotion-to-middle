@@ -60,5 +60,18 @@ app-root {
     grid-column-end: 3;
    }
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+//user mat-menu
+.mat-menu-panel {
+  min-height: unset!important;
+  .mat-menu-content {
+    width: 160px;
+    &:not(:empty) {
+      padding-top: 0!important;
+      padding-bottom: 0!important;
+    }
+  }
+}
+

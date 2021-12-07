@@ -3,5 +3,18 @@
         <mat-icon>search</mat-icon>
         <input type="text" placeholder="Find articles...">
     </div>
-  
+    <span></span>
+
+    <div class="user">
+        <button mat-button [matMenuTriggerFor]="menu" class="user-menu" #t="matMenuTrigger">
+            <img src="../../../../../assets/user.png" alt="user">
+            <span class="user-name" [ngClass]="{'isMenuOpen': t.menuOpen}">Annette Black</span>
+            <mat-icon>expand_more</mat-icon>
+
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+            <button mat-menu-item>Edit profile</button>
+        </mat-menu>
+    </div>
+
 </header>
