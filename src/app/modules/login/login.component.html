@@ -2,23 +2,23 @@
 <section class="login-page" *ngIf="isCurrentRoute('/')">
     <div class="img"></div>
     <div class="form">
-        <form>
+        <form [formGroup]="signInForm"  (ngSubmit)="onSubmit()">
             <h3 class="title">Welcome back</h3>
             <span class="sub-title">Sign in to manage your account.</span>
 
             <mat-form-field floatLabel="always">
                 <mat-label>Email Address</mat-label>
-                <input matInput placeholder="pat@example.com" [formControl]="email">
+                <input matInput placeholder="pat@example.com" [formControlName]="'email'">
             </mat-form-field>
 
             <mat-form-field floatLabel="always">
                 <mat-label>Password</mat-label>
-                <input matInput [type]="'password'">
+                <input matInput [type]="'password'" [formControlName]="'password'">
             </mat-form-field>
 
             <a class="reset-password-link" [routerLink]="'/reset-password'"> Forgot your password? </a>
 
-            <button type="submit" (click)="logIn()"> Sign in </button>
+            <button type="submit"> Sign in </button>
 
             <div class="horisontal-line">
                 <span class="line"></span>
@@ -38,8 +38,6 @@
     </div>
 
 </section>
-
-
 
 <!-- SIGN UP -->
 <section class="signup-page" *ngIf="isCurrentRoute('/signup')">

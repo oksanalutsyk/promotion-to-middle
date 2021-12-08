@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TestAuthService } from '../core/test-auth.service';
 
@@ -9,14 +9,25 @@ import { TestAuthService } from '../core/test-auth.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  email = new FormControl('', [Validators.required, Validators.email]);
+  signInForm: FormGroup;
 
   constructor(
     private testAuthService: TestAuthService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) {
+    this.signInForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['',  [Validators.required]],
+    });
+  }
 
   ngOnInit(): void {}
+
+  onSubmit() {
+    console.log(this.signInForm.value);
+    this.logIn();
+  }
 
   logIn() {
     this.testAuthService.logIn(false);
