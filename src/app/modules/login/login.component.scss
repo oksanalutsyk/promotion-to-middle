@@ -1,21 +1,159 @@
-.login-page, .signup-page, .reset-password-page {
+@import "../../../assets/styles/variables";
+
+.login-page,
+.signup-page,
+.reset-password-page {
+  display: flex;
+  justify-content: space-between;
+
+  .img {
     height: 100vh;
     background-repeat: no-repeat;
+    background-size: cover;
+    width: 600px;
+  }
+  .form {
+    height: 100vh;
+    max-width: calc(100% - 600px);
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    background-color: rgb(229 229 229 / 2%);
+
+    form {
+      width: 465px;
+      display: flex;
+      flex-direction: column;
+
+      .title {
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 35px;
+        color: $black-color;
+        margin-bottom: 8px;
+      }
+      .sub-title {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19px;
+        color: $black-color;
+        margin-bottom: 45px;
+      }
+      mat-form-field {
+        margin-bottom: 25px;
+      }
+
+      .reset-password-link {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 19px;
+        color: $primary-color;
+        margin-bottom: 20px;
+      }
+      button[type="submit"] {
+        color: $white-color;
+        background-color: $primary-color;
+        border-radius: 3px;
+        padding: 16px;
+        width: 100%;
+        transition: 0.5s;
+        &:hover {
+          color: $primary-color;
+          background-color: rgba(46, 91, 255, 0.04);
+          transition: 0.5s;
+        }
+      }
+      .horisontal-line {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 30px 0;
+        .line {
+          height: 0.5px;
+          width: 100%;
+          background-color: #9d9d9d;
+        }
+        .text {
+          font-size: 12px;
+          font-weight: 500;
+          line-height: 14px;
+          text-align: center;
+          margin: 0 18px;
+          white-space: nowrap;
+          color: $secondary-text-color;
+        }
+      }
+      .social-media {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        button {
+          width: 70px;
+          height: 48px;
+          background: $white-color;
+          box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+          border-radius: 6px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          &:not(:last-child) {
+            margin-right: 20px;
+          }
+          img {
+            width: 22px;
+            height: 22px;
+          }
+        }
+      }
+    }
+    .redirect-to {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      bottom: 40px;
+      span {
+        font-size: 16px;
+        line-height: 19px;
+        color: $secondary-text-color;
+        &.link {
+          color: $status-color;
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }
-.login-page, .reset-password-page {
-    background-size: contain;
+
+.login-page,
+.reset-password-page {
+  .img {
+    background-position-x: right;
+    background-position-y: bottom;
+  }
 }
 
 .login-page {
-    background-image: url(../../../assets/pre-login-img/login-image.png);
+  .img {
+    background-image: url(/assets/pre-login-img/login-image.png);
+  }
 }
+
 .signup-page {
-    background-size: cover;
-    background-position-x: -300px;
+  .img {
+    background-image: url(/assets/pre-login-img/signup-image.png);
+    background-position-x: center;
     background-position-y: bottom;
-    background-image: url(../../../assets/pre-login-img/signup-image.png);
+  }
 }
 
 .reset-password-page {
-    background-image: url(../../../assets/pre-login-img/reset-password-image.png);
+  .img {
+    background-image: url(/assets/pre-login-img/reset-password-image.png);
+  }
 }

@@ -3,21 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
-import { CoreModule } from './modules/core/core/core.module';
+import { CoreModule } from './modules/core/core.module';
+import { LoginModule } from './modules/login/login.module';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './modules/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CoreModule
+    CoreModule,
+    LoginModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
