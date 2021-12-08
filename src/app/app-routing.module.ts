@@ -14,6 +14,14 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
+  {
+    path: 'signup',
+    component: LoginComponent,
+  },
+  {
+    path: 'reset-password',
+    component: LoginComponent,
+  },
   { path: '**', redirectTo: '' },
 
 ];

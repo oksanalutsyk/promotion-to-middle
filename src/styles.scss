@@ -32,9 +32,6 @@ a {
   gap: 0px;
   height: 100vh;
 
-  main {
-    background-color: #d87dd7;
-  }
   &.isFullScreen {
     display: grid;
     grid-template-rows: 75px 1fr;

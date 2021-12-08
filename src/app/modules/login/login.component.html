@@ -1,3 +1,25 @@
-<p>login works!</p>
+<!-- LOGIN -->
+<section class="login-page" *ngIf="isCurrentRoute('/')">
+    <h1>Login Page</h1>
 
-<button (click)="logIn()">LOGIN</button>
+    <button style="background-color: red;padding: 10px;" [routerLink]="'/signup'"> Move to SIGN UP</button>
+    <button style="background-color: red;padding: 10px;" [routerLink]="'/reset-password'"> Move to Reset-password</button>
+  
+    <button (click)="logIn()">LOGIN</button>
+
+</section>
+
+<!-- SIGN UP -->
+<section class="signup-page" *ngIf="isCurrentRoute('/signup')">
+    <h1>Sign Up Page</h1>
+
+    <button style="background-color: red;padding: 10px;" [routerLink]="'/'"> Move to Login</button>
+</section>
+
+<!-- RESET PASSWORD -->
+<section class="reset-password-page" *ngIf="isCurrentRoute('/reset-password')">
+    <h1>Reset Password Page</h1>
+    <button style="background-color: red;padding: 10px;" [routerLink]="'/'"> Move to Login</button>
+</section>
+
+

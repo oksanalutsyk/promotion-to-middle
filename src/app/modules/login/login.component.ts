@@ -19,4 +19,8 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/dashboard']);
 
   }
+
+  isCurrentRoute(route:string):boolean {
+    return this.router.url === route;
+  }
 }

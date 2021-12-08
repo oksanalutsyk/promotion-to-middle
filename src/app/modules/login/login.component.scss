@@ -1,0 +1,21 @@
+.login-page, .signup-page, .reset-password-page {
+    height: 100vh;
+    background-repeat: no-repeat;
+}
+.login-page, .reset-password-page {
+    background-size: contain;
+}
+
+.login-page {
+    background-image: url(../../../assets/pre-login-img/login-image.png);
+}
+.signup-page {
+    background-size: cover;
+    background-position-x: -300px;
+    background-position-y: bottom;
+    background-image: url(../../../assets/pre-login-img/signup-image.png);
+}
+
+.reset-password-page {
+    background-image: url(../../../assets/pre-login-img/reset-password-image.png);
+}
