@@ -29,11 +29,11 @@
                 <span class="line"></span>
             </div>
 
-            <div class="social-media">
-                <button><img src="../../../assets/icons/google-color-icon.svg" alt="google"></button>
-                <button><img src="../../../assets/icons/facebook-color-icon.svg" alt="facebook"></button>
-            </div>
         </form>
+        <div class="social-media">
+            <button (click)="loginWithGoogle()"><img src="../../../assets/icons/google-color-icon.svg" alt="google"></button>
+            <button><img src="../../../assets/icons/facebook-color-icon.svg" alt="facebook"></button>
+        </div>
         <span class="redirect-to">
             <span class="info">Don’t have an account? </span>
             <span class="link" [routerLink]="'/signup'"> Sign Up</span>
@@ -101,12 +101,13 @@
                 <span class="text">Or sign up with</span>
                 <span class="line"></span>
             </div>
-
-            <div class="social-media">
-                <button><img src="../../../assets/icons/google-color-icon.svg" alt="google"></button>
-                <button><img src="../../../assets/icons/facebook-color-icon.svg" alt="facebook"></button>
-            </div>
         </form>
+
+        <div class="social-media">
+            <button><img src="../../../assets/icons/google-color-icon.svg" alt="google"></button>
+            <button><img src="../../../assets/icons/facebook-color-icon.svg" alt="facebook"></button>
+        </div>
+
         <span class="redirect-to">
             <span class="info">Already have an account? </span>
             <span class="link" [routerLink]="'/'"> Login</span>

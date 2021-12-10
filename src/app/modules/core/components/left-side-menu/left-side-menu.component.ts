@@ -18,12 +18,17 @@ export class LeftSideMenuComponent implements OnInit {
   ngOnInit(): void {}
 
   logOut() {
-    this.testAuthService.logIn(this.isAuth).subscribe(() => {
-      this.testAuthService
-        .getAuthState()
-        .subscribe((data) => (this.isAuth = data));
-        this.router.navigate(['/']);
-        this.testAuthService.logIn(this.isAuth)
-    });
+    this.testAuthService.logOutWithGoogle();
+    this.router.navigate(['/']);
+    // this.testAuthService.$authenticationState.next(false);
+
+
+    // this.testAuthService.logIn(this.isAuth).subscribe(() => {
+    //   this.testAuthService
+    //     .getAuthState()
+    //     .subscribe((data) => (this.isAuth = data));
+    //     this.router.navigate(['/']);
+    //     this.testAuthService.logIn(this.isAuth)
+    // });
   }
 }

@@ -20,7 +20,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
+    flex-direction: column;
     position: relative;
 
     background-color: rgb(229 229 229 / 2%);
@@ -120,26 +120,27 @@
           color: $secondary-text-color;
         }
       }
-      .social-media {
+     
+    }
+    .social-media {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      button {
+        width: 70px;
+        height: 48px;
+        background: $white-color;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
         display: flex;
         align-items: center;
         justify-content: center;
-        button {
-          width: 70px;
-          height: 48px;
-          background: $white-color;
-          box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
-          border-radius: 6px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          &:not(:last-child) {
-            margin-right: 20px;
-          }
-          img {
-            width: 22px;
-            height: 22px;
-          }
+        &:not(:last-child) {
+          margin-right: 20px;
+        }
+        img {
+          width: 22px;
+          height: 22px;
         }
       }
     }

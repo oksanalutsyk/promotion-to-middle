@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SocialAuthService, SocialUser } from 'angularx-social-login';
 
 import { TestAuthService } from '../core/test-auth.service';
 
@@ -16,11 +17,11 @@ export class LoginComponent implements OnInit {
   signUpForm: FormGroup;
   resetPasswordForm: FormGroup;
 
-  constructor(
-    private testAuthService: TestAuthService,
-    private router: Router,
-    private formBuilder: FormBuilder
-  ) {
+  socialUser: SocialUser | null = null;
+  isLoggedin: boolean = false;
+
+  constructor( private testAuthService: TestAuthService, private router: Router,
+               private formBuilder: FormBuilder, private socialAuthService: SocialAuthService) {
     this.signInForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
@@ -41,11 +42,28 @@ export class LoginComponent implements OnInit {
     );
 
     this.resetPasswordForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email]],
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.socialAuthService.authState.subscribe((user) => {
+      this.socialUser = user;
+      this.isLoggedin = user != null;
+ 
+        if(this.socialUser !==null) {
+          this.router.navigate(['/dashboard']);
+        }
+        else {
+          this.router.navigate(['/']);
+        }
+
+    });
+  }
+
+  loginWithGoogle(): void {
+    this.testAuthService.loginWithGoogle();
+  }
 
   onSubmitSignIn() {
     console.log(this.signInForm.value);
@@ -60,8 +78,8 @@ export class LoginComponent implements OnInit {
   }
 
   logIn() {
-    this.testAuthService.logIn(false);
-    this.router.navigate(['/dashboard']);
+    // this.testAuthService.logIn(false);
+    // this.router.navigate(['/dashboard']);
   }
 
   getErrorMessage(data: string) {
