@@ -14,6 +14,7 @@ import Validation from './password-validator';
 export class LoginComponent implements OnInit {
   signInForm: FormGroup;
   signUpForm: FormGroup;
+  resetPasswordForm: FormGroup;
 
   constructor(
     private testAuthService: TestAuthService,
@@ -38,6 +39,10 @@ export class LoginComponent implements OnInit {
         validators: [Validation.match('password', 'confirmedPassword')],
       }
     );
+
+    this.resetPasswordForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]]
+    });
   }
 
   ngOnInit(): void {}
@@ -48,6 +53,10 @@ export class LoginComponent implements OnInit {
   }
   onSubmitSignUp() {
     console.log(this.signUpForm.value);
+  }
+
+  onSubmitResetPassword() {
+    console.log(this.resetPasswordForm.value);
   }
 
   logIn() {

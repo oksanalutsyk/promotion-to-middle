@@ -121,13 +121,20 @@
 
     <div class="img"></div>
     <div class="form">
-        <form>
-            <h3 class="title">Title</h3>
-            <span class="sub-title"></span>
+        <form [formGroup]="resetPasswordForm" (ngSubmit)="onSubmitResetPassword()">
+            <h3 class="title">Password recovery</h3>
+            <span class="sub-title">Enter the email you're using for your account.</span>
+
+            <mat-form-field floatLabel="always">
+                <mat-label>Email Address</mat-label>
+                <input matInput placeholder="Enter your email" formControlName='email'>
+                <mat-error *ngIf="resetPasswordForm.controls.email.errors?.required">Email is required</mat-error>
+                <mat-error *ngIf="resetPasswordForm.controls.email.errors?.email">Email is invalid</mat-error>
+            </mat-form-field>
+
+            <button type="submit" [disabled]="!resetPasswordForm.valid"> Get started now </button>
+            <button type="button" class="transparent" [routerLink]="'/'">Back to Login</button>
+
         </form>
     </div>
-
-
-    <!-- <h1>Reset Password Page</h1>
-    <button style="background-color: red;padding: 10px;" [routerLink]="'/'"> Move to Login</button> -->
 </section>
