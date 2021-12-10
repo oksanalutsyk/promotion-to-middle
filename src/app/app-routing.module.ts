@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+//components
 import { LoginComponent } from './modules/login/login.component';
+import { TermsAndPolicyComponent } from './modules/core/components/terms-and-policy/terms-and-policy.component';
+
 
 const routes: Routes = [
   {
@@ -21,6 +24,10 @@ const routes: Routes = [
   {
     path: 'reset-password',
     component: LoginComponent,
+  },
+  {
+    path: 'terms-and-policy',
+    component: TermsAndPolicyComponent,
   },
   { path: '**', redirectTo: '' },
 

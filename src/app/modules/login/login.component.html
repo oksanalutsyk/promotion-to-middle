@@ -89,7 +89,7 @@
             <mat-checkbox class="terms-and-policy-link" formControlName='acceptTerms'>
                 <span>
                     <span class="info">I agree to Product </span>
-                    <span class="link" [routerLink]="'/term-and-policy'"> Terms and Policy.</span>
+                    <span class="link" [routerLink]="'/terms-and-policy'"> Terms and Policy.</span>
                 </span>
                 <mat-error *ngIf="signUpForm.controls.acceptTerms.touched && signUpForm.controls.acceptTerms.errors"> Accept Terms is required</mat-error>
             </mat-checkbox>
