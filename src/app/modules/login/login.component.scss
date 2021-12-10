@@ -57,6 +57,7 @@
         line-height: 19px;
         color: $primary-color;
         margin-bottom: 20px;
+        width: max-content;
       }
 
       .terms-and-policy-link {
@@ -82,6 +83,10 @@
           color: $primary-color;
           background-color: rgba(46, 91, 255, 0.04);
           transition: 0.5s;
+        }
+        &:disabled {
+          color: $inactive-state-color;
+          background-color: $input-color;
         }
       }
       .horisontal-line {

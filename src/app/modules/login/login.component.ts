@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { TestAuthService } from '../core/test-auth.service';
+
+import Validation from './password-validator';
 
 @Component({
   selector: 'app-login',
@@ -19,17 +22,22 @@ export class LoginComponent implements OnInit {
   ) {
     this.signInForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['',  [Validators.required]],
+      password: ['', [Validators.required]],
     });
 
-    this.signUpForm = this.formBuilder.group({
-      name: ['',  [Validators.required]],
-      age: ['',  [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['',  [Validators.required]],
-      confirmedPassword: ['',  [Validators.required]],
-      isAgree: [false,  [Validators.required]],
-    });
+    this.signUpForm = this.formBuilder.group(
+      {
+        name: ['', [Validators.required]],
+        age: ['', [Validators.required]],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(8)]],
+        confirmedPassword: ['', [Validators.required]],
+        acceptTerms: [false, [Validators.requiredTrue]],
+      },
+      {
+        validators: [Validation.match('password', 'confirmedPassword')],
+      }
+    );
   }
 
   ngOnInit(): void {}
@@ -45,6 +53,10 @@ export class LoginComponent implements OnInit {
   logIn() {
     this.testAuthService.logIn(false);
     this.router.navigate(['/dashboard']);
+  }
+
+  getErrorMessage(data: string) {
+    return 'Not a valid ' + data;
   }
 
   isCurrentRoute(route: string): boolean {

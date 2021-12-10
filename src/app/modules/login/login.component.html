@@ -9,16 +9,19 @@
             <mat-form-field floatLabel="always">
                 <mat-label>Email Address</mat-label>
                 <input matInput placeholder="pat@example.com" [formControlName]="'email'">
+                <mat-error *ngIf="signInForm.controls.email.errors?.required">Email is required</mat-error>
+                <mat-error *ngIf="signInForm.controls.email.errors?.email">Email is invalid</mat-error>
             </mat-form-field>
 
             <mat-form-field floatLabel="always">
                 <mat-label>Password</mat-label>
                 <input matInput [type]="'password'" [formControlName]="'password'">
+                <mat-error *ngIf="signInForm.controls.password.errors?.required">Password is required</mat-error>
             </mat-form-field>
 
             <a class="reset-password-link" [routerLink]="'/reset-password'"> Forgot your password? </a>
 
-            <button type="submit"> Sign in </button>
+            <button type="submit" [disabled]="!signInForm.valid"> Sign in </button>
 
             <div class="horisontal-line">
                 <span class="line"></span>
@@ -52,38 +55,46 @@
                 <mat-form-field floatLabel="always">
                     <mat-label>Name</mat-label>
                     <input matInput placeholder="Enter your name" formControlName='name'>
+                    <mat-error *ngIf="signUpForm.controls.name.errors?.required">Name is required</mat-error>
                 </mat-form-field>
 
                 <mat-form-field floatLabel="always">
                     <mat-label>Age</mat-label>
                     <input matInput placeholder="Enter your age" formControlName='age'>
+                    <mat-error *ngIf="signUpForm.controls.age.errors?.required">Age is required</mat-error>
                 </mat-form-field>
             </div>
             <mat-form-field floatLabel="always">
                 <mat-label>Email Address</mat-label>
                 <input matInput placeholder="Enter your email" formControlName='email'>
+                <mat-error *ngIf="signUpForm.controls.email.errors?.required">Email is required</mat-error>
+                <mat-error *ngIf="signUpForm.controls.email.errors?.email">Email is invalid</mat-error>
             </mat-form-field>
 
             <mat-form-field floatLabel="always" class="isHint">
                 <mat-label>Password</mat-label>
                 <input matInput [type]="'password'" placeholder="Enter your password" formControlName='password'>
                 <mat-hint>Must be 8 characters long at least</mat-hint>
+                <mat-error *ngIf="signUpForm.controls.password.errors?.required">Password is required</mat-error>
+                <mat-error *ngIf="signUpForm.controls.password.errors?.minlength">Password must be at least 8 characters</mat-error>
             </mat-form-field>
+
             <mat-form-field floatLabel="always">
                 <mat-label>Confirm New Password</mat-label>
-                <input matInput [type]="'password'" placeholder="Enter your new password again"
-                    formControlName='confirmedPassword'>
+                <input matInput [type]="'password'" placeholder="Enter your new password again" formControlName='confirmedPassword'>
+                <mat-error *ngIf="signUpForm.controls.confirmedPassword.errors?.required">Confirm Password is required </mat-error>
+                <mat-error *ngIf="signUpForm.controls.confirmedPassword.errors?.matching"> Confirm Password does not match</mat-error>
             </mat-form-field>
 
-            <mat-checkbox class="terms-and-policy-link" formControlName='isAgree'>
+            <mat-checkbox class="terms-and-policy-link" formControlName='acceptTerms'>
                 <span>
                     <span class="info">I agree to Product </span>
-                    <span class="link" [routerLink]="'/'"> Terms and Policy.</span>
+                    <span class="link" [routerLink]="'/term-and-policy'"> Terms and Policy.</span>
                 </span>
+                <mat-error *ngIf="signUpForm.controls.acceptTerms.touched && signUpForm.controls.acceptTerms.errors"> Accept Terms is required</mat-error>
             </mat-checkbox>
 
-
-            <button type="submit"> Get started now </button>
+            <button type="submit" [disabled]="!signUpForm.valid"> Get started now </button>
 
             <div class="horisontal-line">
                 <span class="line"></span>
