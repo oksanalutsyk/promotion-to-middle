@@ -10,6 +10,7 @@ import { TestAuthService } from '../core/test-auth.service';
 })
 export class LoginComponent implements OnInit {
   signInForm: FormGroup;
+  signUpForm: FormGroup;
 
   constructor(
     private testAuthService: TestAuthService,
@@ -20,13 +21,25 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['',  [Validators.required]],
     });
+
+    this.signUpForm = this.formBuilder.group({
+      name: ['',  [Validators.required]],
+      age: ['',  [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['',  [Validators.required]],
+      confirmedPassword: ['',  [Validators.required]],
+      isAgree: [false,  [Validators.required]],
+    });
   }
 
   ngOnInit(): void {}
 
-  onSubmit() {
+  onSubmitSignIn() {
     console.log(this.signInForm.value);
     this.logIn();
+  }
+  onSubmitSignUp() {
+    console.log(this.signUpForm.value);
   }
 
   logIn() {

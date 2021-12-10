@@ -2,7 +2,7 @@
 <section class="login-page" *ngIf="isCurrentRoute('/')">
     <div class="img"></div>
     <div class="form">
-        <form [formGroup]="signInForm"  (ngSubmit)="onSubmit()">
+        <form [formGroup]="signInForm" (ngSubmit)="onSubmitSignIn()">
             <h3 class="title">Welcome back</h3>
             <span class="sub-title">Sign in to manage your account.</span>
 
@@ -44,16 +44,64 @@
 
     <div class="img"></div>
     <div class="form">
-        <form>
-            <h3 class="title">Title</h3>
-            <span class="sub-title"></span>
+        <form [formGroup]="signUpForm" (ngSubmit)="onSubmitSignUp()">
+            <h3 class="title">Get started today</h3>
+            <span class="sub-title">Enter your details to create super account.</span>
+
+            <div class="horisontal-container">
+                <mat-form-field floatLabel="always">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Enter your name" formControlName='name'>
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always">
+                    <mat-label>Age</mat-label>
+                    <input matInput placeholder="Enter your age" formControlName='age'>
+                </mat-form-field>
+            </div>
+            <mat-form-field floatLabel="always">
+                <mat-label>Email Address</mat-label>
+                <input matInput placeholder="Enter your email" formControlName='email'>
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" class="isHint">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="'password'" placeholder="Enter your password" formControlName='password'>
+                <mat-hint>Must be 8 characters long at least</mat-hint>
+            </mat-form-field>
+            <mat-form-field floatLabel="always">
+                <mat-label>Confirm New Password</mat-label>
+                <input matInput [type]="'password'" placeholder="Enter your new password again"
+                    formControlName='confirmedPassword'>
+            </mat-form-field>
+
+            <mat-checkbox class="terms-and-policy-link" formControlName='isAgree'>
+                <span>
+                    <span class="info">I agree to Product </span>
+                    <span class="link" [routerLink]="'/'"> Terms and Policy.</span>
+                </span>
+            </mat-checkbox>
+
+
+            <button type="submit"> Get started now </button>
+
+            <div class="horisontal-line">
+                <span class="line"></span>
+                <span class="text">Or sign up with</span>
+                <span class="line"></span>
+            </div>
+
+            <div class="social-media">
+                <button><img src="../../../assets/icons/google-color-icon.svg" alt="google"></button>
+                <button><img src="../../../assets/icons/facebook-color-icon.svg" alt="facebook"></button>
+            </div>
         </form>
+        <span class="redirect-to">
+            <span class="info">Already have an account? </span>
+            <span class="link" [routerLink]="'/'"> Login</span>
+        </span>
     </div>
 
-
-    <!-- <h1>Sign Up Page</h1>
-
-    <button style="background-color: red;padding: 10px;" [routerLink]="'/'"> Move to Login</button> -->
 </section>
 
 

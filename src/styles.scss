@@ -80,16 +80,15 @@ a {
 
 //mat-form-field
 .mat-form-field-wrapper {
-  padding: 0!important
+  padding: 0 !important;
 }
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active{
-    -webkit-box-shadow: 0 0 0 30px $input-color inset !important;
-    -webkit-text-fill-color: $secondary-text-color !important;
-
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px $input-color inset !important;
+  -webkit-text-fill-color: $secondary-text-color !important;
 }
 
 input.mat-input-element {
@@ -98,9 +97,9 @@ input.mat-input-element {
   box-sizing: border-box;
   border-radius: 3px;
   background-color: $input-color !important;
-  outline: none!important;
+  outline: none !important;
   font-size: 16px;
-  color: $secondary-text-color!important;
+  color: $secondary-text-color !important;
 }
 
 .mat-form-field-underline {
@@ -108,9 +107,42 @@ input.mat-input-element {
 }
 .mat-form-field-label {
   color: $secondary-text-color !important;
-  font-size: 16px!important;
-  line-height: 19px!important;
+  font-size: 16px !important;
+  line-height: 19px !important;
 }
 .mat-form-field-infix {
-  padding: 0!important;
+  padding: 0 !important;
+}
+
+//mat-check-box
+.mat-checkbox-inner-container {
+  height: 24px !important;
+  width: 24px !important;
+  background: $input-color;
+  box-sizing: border-box;
+}
+
+.mat-checkbox-frame {
+  border: 1px solid #eeeeef;
+  border-radius: 3px !important;
+}
+.mat-checkbox .mat-checkbox-ripple {
+  display: none;
+}
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: $status-color;
+}
+
+// mat-hint
+mat-hint {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15px;
+}
+
+
+.mat-form-field-appearance-legacy .mat-form-field-subscript-wrapper {
+  margin-top: 20px;
 }
