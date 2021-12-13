@@ -1,39 +1,27 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
-import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TestAuthService {
 
-  $authenticationState = new BehaviorSubject<boolean>(false);
-
-  isAuth:boolean = false;
-
-  constructor(private socialAuthService: SocialAuthService) { }
-
+  constructor( private socialAuthService: SocialAuthService, private router: Router) {}
 
   logOutWithGoogle(): void {
     this.socialAuthService.signOut();
-    this.$authenticationState.next(false);
   }
 
   loginWithGoogle(): void {
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    this.$authenticationState.next(true)
-
+    this.socialAuthService
+      .signIn(GoogleLoginProvider.PROVIDER_ID)
+      .then(() => {
+        this.router.navigate(['/dashboard']);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
-
-
-  // logIn(data:boolean):Observable<any>{
-  //   this.isAuth = !data;
-  //   this.$authenticationState.next(this.isAuth);
-  //   return of(!data)
-  // }
-
-  getAuthState():Observable<any> {
-    return of(this.isAuth)
-  }
-
 }

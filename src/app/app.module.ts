@@ -29,7 +29,7 @@ const GOOGLE_CLIENT_ID = '974582432978-h36rta581tipa8jgkt1tvtuff8epogq7.apps.goo
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
-        autoLogin: false,
+        autoLogin: true,
         providers: [
           {
             id: GoogleLoginProvider.PROVIDER_ID,
@@ -39,7 +39,7 @@ const GOOGLE_CLIENT_ID = '974582432978-h36rta581tipa8jgkt1tvtuff8epogq7.apps.goo
           }
         ]
       } as SocialAuthServiceConfig,
-    } 
+    }
   ],
   bootstrap: [AppComponent]
 })

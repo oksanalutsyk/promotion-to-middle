@@ -50,14 +50,6 @@ export class LoginComponent implements OnInit {
     this.socialAuthService.authState.subscribe((user) => {
       this.socialUser = user;
       this.isLoggedin = user != null;
- 
-        if(this.socialUser !==null) {
-          this.router.navigate(['/dashboard']);
-        }
-        else {
-          this.router.navigate(['/']);
-        }
-
     });
   }
 

@@ -5,17 +5,25 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './modules/login/login.component';
 import { TermsAndPolicyComponent } from './modules/core/components/terms-and-policy/terms-and-policy.component';
 
+//guards
+import { AuthGuard } from './modules/core/guards/auth.guard';
+
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
-    pathMatch: 'full',
+    redirectTo: 'login',
+    pathMatch: 'full'
   },
   {
     path: 'dashboard',
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./modules/dashboard/dashboard.module').then((m) => m.DashboardModule),
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   },
   {
     path: 'signup',

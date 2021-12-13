@@ -1,5 +1,5 @@
 <!-- LOGIN -->
-<section class="login-page" *ngIf="isCurrentRoute('/')">
+<section class="login-page" *ngIf="isCurrentRoute('/login')">
     <div class="img"></div>
     <div class="form">
         <form [formGroup]="signInForm" (ngSubmit)="onSubmitSignIn()">
@@ -110,7 +110,7 @@
 
         <span class="redirect-to">
             <span class="info">Already have an account? </span>
-            <span class="link" [routerLink]="'/'"> Login</span>
+            <span class="link" [routerLink]="'/login'"> Login</span>
         </span>
     </div>
 
@@ -134,7 +134,7 @@
             </mat-form-field>
 
             <button type="submit" [disabled]="!resetPasswordForm.valid"> Get started now </button>
-            <button type="button" class="transparent" [routerLink]="'/'">Back to Login</button>
+            <button type="button" class="transparent" [routerLink]="'/login'">Back to Login</button>
 
         </form>
     </div>
