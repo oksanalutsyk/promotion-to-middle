@@ -7,6 +7,7 @@ import { TermsAndPolicyComponent } from './modules/core/components/terms-and-pol
 
 //guards
 import { AuthGuard } from './modules/core/guards/auth.guard';
+import { InnerPageGuard } from './modules/core/guards/inner-page.guard';
 
 
 const routes: Routes = [
@@ -23,14 +24,17 @@ const routes: Routes = [
   },
   {
     path: 'login',
+    canActivate: [InnerPageGuard],
     component: LoginComponent,
   },
   {
     path: 'signup',
+    canActivate: [InnerPageGuard],
     component: LoginComponent,
   },
   {
     path: 'reset-password',
+    canActivate: [InnerPageGuard],
     component: LoginComponent,
   },
   {

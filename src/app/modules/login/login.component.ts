@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+
 import { SocialAuthService, SocialUser } from 'angularx-social-login';
 
 import { TestAuthService } from '../core/test-auth.service';
@@ -11,8 +13,11 @@ import Validation from './password-validator';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
+  private subscription: Subscription = new Subscription();
+
   signInForm: FormGroup;
   signUpForm: FormGroup;
   resetPasswordForm: FormGroup;
@@ -47,7 +52,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.socialAuthService.authState.subscribe((user) => {
+    this.subscription = this.socialAuthService.authState.subscribe((user) => {
       this.socialUser = user;
       this.isLoggedin = user != null;
     });
@@ -81,4 +86,10 @@ export class LoginComponent implements OnInit {
   isCurrentRoute(route: string): boolean {
     return this.router.url === route;
   }
+
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
+  }
+
 }
