@@ -12,7 +12,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   title = 'promotion-to-middle';
   //TO DO
-  isLoggedIn = true;
+  isLoggedIn = false;
 
   constructor(private socialAuthService: SocialAuthService) {}
 
