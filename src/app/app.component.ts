@@ -1,6 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SocialAuthService } from 'angularx-social-login';
 import { Subscription } from 'rxjs';
+
+import { SocialUser } from 'angularx-social-login';
+
+import { AuthService } from './modules/core/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -14,11 +17,13 @@ export class AppComponent implements OnInit, OnDestroy {
   //TO DO
   isLoggedIn = false;
 
-  constructor(private socialAuthService: SocialAuthService) {}
+  constructor( private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.subscription = this.socialAuthService.authState.subscribe((data) => {
-      if (data) {
+    this.authService.getUser();
+
+    this.authService.$user.subscribe((user: SocialUser | null) => {
+      if (user) {
         this.isLoggedIn = true;
       } else {
         this.isLoggedIn = false;
@@ -27,6 +32,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe()
+    this.subscription.unsubscribe();
   }
 }

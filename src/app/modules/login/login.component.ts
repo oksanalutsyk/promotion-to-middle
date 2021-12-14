@@ -3,7 +3,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { SocialAuthService, SocialUser } from 'angularx-social-login';
+import { SocialUser } from 'angularx-social-login';
 
 import { AuthService } from '../core/auth.service';
 
@@ -25,8 +25,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   socialUser: SocialUser | null = null;
   isLoggedin: boolean = false;
 
-  constructor( private authService: AuthService, private router: Router,
-               private formBuilder: FormBuilder, private socialAuthService: SocialAuthService) {
+  constructor( private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
     this.signInForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
@@ -52,10 +51,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subscription = this.socialAuthService.authState.subscribe((user) => {
-      this.socialUser = user;
-      this.isLoggedin = user != null;
-    });
+    this.authService.$user.subscribe((user:SocialUser | null) => {
+        this.socialUser = user;
+        this.isLoggedin = user != null;
+    })
   }
 
   loginWithGoogle(): void {
