@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 
 import { SocialAuthService, SocialUser } from 'angularx-social-login';
 
-import { TestAuthService } from '../core/test-auth.service';
+import { AuthService } from '../core/auth.service';
 
 import Validation from './password-validator';
 
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   socialUser: SocialUser | null = null;
   isLoggedin: boolean = false;
 
-  constructor( private testAuthService: TestAuthService, private router: Router,
+  constructor( private authService: AuthService, private router: Router,
                private formBuilder: FormBuilder, private socialAuthService: SocialAuthService) {
     this.signInForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   loginWithGoogle(): void {
-    this.testAuthService.loginWithGoogle();
+    this.authService.loginWithGoogle();
   }
 
   onSubmitSignIn() {

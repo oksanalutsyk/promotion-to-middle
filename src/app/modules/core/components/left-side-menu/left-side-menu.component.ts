@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { TestAuthService } from '../../test-auth.service';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-left-side-menu',
@@ -11,12 +11,12 @@ import { TestAuthService } from '../../test-auth.service';
 export class LeftSideMenuComponent implements OnInit {
   isAuth = false;
 
-  constructor( private testAuthService: TestAuthService, private router: Router) {}
+  constructor( private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
   logOut() {
     this.router.navigate(['login']);
-    this.testAuthService.logOutWithGoogle();
+    this.authService.logOutWithGoogle();
   }
 }

@@ -6,7 +6,7 @@ import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 @Injectable({
   providedIn: 'root',
 })
-export class TestAuthService {
+export class AuthService {
 
   constructor( private socialAuthService: SocialAuthService, private router: Router) {}
 
