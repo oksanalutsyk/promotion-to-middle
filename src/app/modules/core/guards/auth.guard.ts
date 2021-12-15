@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     return !!this.authService.$user.subscribe((socialUser: SocialUser | null) => {
       if(!socialUser) {
-        this.router.navigate(['login']);
+        this.router.navigate(['auth']);
         return false
       }
       return true

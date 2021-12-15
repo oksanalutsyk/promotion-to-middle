@@ -13,7 +13,7 @@ import { InnerPageGuard } from './modules/core/guards/inner-page.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'auth',
     pathMatch: 'full'
   },
   {
@@ -23,25 +23,16 @@ const routes: Routes = [
       import('./modules/dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
   {
-    path: 'login',
+    path: 'auth',
     canActivate: [InnerPageGuard],
-    component: LoginComponent,
-  },
-  {
-    path: 'signup',
-    canActivate: [InnerPageGuard],
-    component: LoginComponent,
-  },
-  {
-    path: 'reset-password',
-    canActivate: [InnerPageGuard],
-    component: LoginComponent,
+    loadChildren: () =>
+      import('./modules/login/login.module').then((m) => m.LoginModule),
   },
   {
     path: 'terms-and-policy',
     component: TermsAndPolicyComponent,
   },
-  { path: '**', redirectTo: '' },
+  { path: '**', redirectTo: 'auth' },
 
 ];
 

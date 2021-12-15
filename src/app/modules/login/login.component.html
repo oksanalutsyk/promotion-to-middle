@@ -1,5 +1,5 @@
 <!-- LOGIN -->
-<section class="login-page" *ngIf="isCurrentRoute('/login')">
+<section class="login-page" *ngIf="isCurrentRoute('/auth/login')">
     <div class="img"></div>
     <div class="form">
         <form [formGroup]="signInForm" (ngSubmit)="onSubmitSignIn()">
@@ -19,7 +19,7 @@
                 <mat-error *ngIf="signInForm.controls.password.errors?.required">Password is required</mat-error>
             </mat-form-field>
 
-            <a class="reset-password-link" [routerLink]="'/reset-password'"> Forgot your password? </a>
+            <a class="reset-password-link" [routerLink]="'/auth/reset-password'"> Forgot your password? </a>
 
             <button type="submit" [disabled]="!signInForm.valid"> Sign in </button>
 
@@ -36,14 +36,14 @@
         </div>
         <span class="redirect-to">
             <span class="info">Don’t have an account? </span>
-            <span class="link" [routerLink]="'/signup'"> Sign Up</span>
+            <span class="link" [routerLink]="'/auth/signup'"> Sign Up</span>
         </span>
     </div>
 
 </section>
 
 <!-- SIGN UP -->
-<section class="signup-page" *ngIf="isCurrentRoute('/signup')">
+<section class="signup-page" *ngIf="isCurrentRoute('/auth/signup')">
 
     <div class="img"></div>
     <div class="form">
@@ -110,7 +110,7 @@
 
         <span class="redirect-to">
             <span class="info">Already have an account? </span>
-            <span class="link" [routerLink]="'/login'"> Login</span>
+            <span class="link" [routerLink]="'/auth'"> Login</span>
         </span>
     </div>
 
@@ -118,7 +118,7 @@
 
 
 <!-- RESET PASSWORD -->
-<section class="reset-password-page" *ngIf="isCurrentRoute('/reset-password')">
+<section class="reset-password-page" *ngIf="isCurrentRoute('/auth/reset-password')">
 
     <div class="img"></div>
     <div class="form">
@@ -134,7 +134,7 @@
             </mat-form-field>
 
             <button type="submit" [disabled]="!resetPasswordForm.valid"> Get started now </button>
-            <button type="button" class="transparent" [routerLink]="'/login'">Back to Login</button>
+            <button type="button" class="transparent" [routerLink]="'/auth'">Back to Login</button>
 
         </form>
     </div>

@@ -16,7 +16,7 @@ export class LeftSideMenuComponent implements OnInit {
   ngOnInit(): void {}
 
   logOut() {
-    this.router.navigate(['login']);
+    this.router.navigate(['auth']);
     this.authService.logOutWithGoogle();
   }
 }
