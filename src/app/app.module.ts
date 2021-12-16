@@ -10,6 +10,8 @@ import { CoreModule } from './modules/core/core.module';
 import { LoginModule } from './modules/login/login.module';
 
 import { AppComponent } from './app.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const GOOGLE_CLIENT_ID = '974582432978-h36rta581tipa8jgkt1tvtuff8epogq7.apps.googleusercontent.com';
 
@@ -23,7 +25,11 @@ const GOOGLE_CLIENT_ID = '974582432978-h36rta581tipa8jgkt1tvtuff8epogq7.apps.goo
     BrowserAnimationsModule,
     CoreModule,
     LoginModule,
-    SocialLoginModule
+    SocialLoginModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     {
