@@ -62,10 +62,21 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onSubmitSignIn() {
-    console.log(this.signInForm.value);
-    this.logIn();
+    this.logIn(this.signInForm.value.email, this.signInForm.value.password);
+    // console.log(this.signInForm.value);
+
   }
   onSubmitSignUp() {
+    this.authService.signUp(this.signUpForm.value.email, this.signUpForm.value.password, this.signUpForm.value.name, this.signUpForm.value.age).subscribe(
+    res=> {
+      this.authService.addUserToDB(this.signUpForm.value, res.localId )
+      this.signUpForm.reset()
+    },
+    error => {
+      console.log(error);
+      this.signUpForm.reset()
+    }
+    )
     console.log(this.signUpForm.value);
   }
 
@@ -73,7 +84,14 @@ export class LoginComponent implements OnInit, OnDestroy {
     console.log(this.resetPasswordForm.value);
   }
 
-  logIn() {
+  logIn(email:string, password:string) {
+    this.authService.logIn(email, password).subscribe(res=> {
+      console.log(res);
+
+    },
+    error => {
+      console.log(error)
+    })
     // this.testAuthService.logIn(false);
     // this.router.navigate(['/dashboard']);
   }

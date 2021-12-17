@@ -55,35 +55,35 @@
                 <mat-form-field floatLabel="always">
                     <mat-label>Name</mat-label>
                     <input matInput placeholder="Enter your name" formControlName='name'>
-                    <mat-error *ngIf="signUpForm.controls.name.errors?.required">Name is required</mat-error>
+                    <mat-error *ngIf="signUpForm.controls.name.errors?.required && signUpForm.controls.name.touched">Name is required</mat-error>
                 </mat-form-field>
 
                 <mat-form-field floatLabel="always">
                     <mat-label>Age</mat-label>
                     <input matInput placeholder="Enter your age" formControlName='age'>
-                    <mat-error *ngIf="signUpForm.controls.age.errors?.required">Age is required</mat-error>
+                    <mat-error *ngIf="signUpForm.controls.age.errors?.required && signUpForm.controls.age.touched">Age is required</mat-error>
                 </mat-form-field>
             </div>
             <mat-form-field floatLabel="always">
                 <mat-label>Email Address</mat-label>
                 <input matInput placeholder="Enter your email" formControlName='email'>
-                <mat-error *ngIf="signUpForm.controls.email.errors?.required">Email is required</mat-error>
-                <mat-error *ngIf="signUpForm.controls.email.errors?.email">Email is invalid</mat-error>
+                <mat-error *ngIf="signUpForm.controls.email.errors?.required && signUpForm.controls.email.touched">Email is required</mat-error>
+                <mat-error *ngIf="signUpForm.controls.email.errors?.email && signUpForm.controls.email.touched">Email is invalid</mat-error>
             </mat-form-field>
 
             <mat-form-field floatLabel="always" class="isHint">
                 <mat-label>Password</mat-label>
                 <input matInput [type]="'password'" placeholder="Enter your password" formControlName='password'>
                 <mat-hint>Must be 8 characters long at least</mat-hint>
-                <mat-error *ngIf="signUpForm.controls.password.errors?.required">Password is required</mat-error>
-                <mat-error *ngIf="signUpForm.controls.password.errors?.minlength">Password must be at least 8 characters</mat-error>
+                <mat-error *ngIf="signUpForm.controls.password.errors?.required && signUpForm.controls.password.touched">Password is required</mat-error>
+                <mat-error *ngIf="signUpForm.controls.password.errors?.minlength && signUpForm.controls.password.touched">Password must be at least 8 characters</mat-error>
             </mat-form-field>
 
             <mat-form-field floatLabel="always">
                 <mat-label>Confirm New Password</mat-label>
                 <input matInput [type]="'password'" placeholder="Enter your new password again" formControlName='confirmedPassword'>
-                <mat-error *ngIf="signUpForm.controls.confirmedPassword.errors?.required">Confirm Password is required </mat-error>
-                <mat-error *ngIf="signUpForm.controls.confirmedPassword.errors?.matching"> Confirm Password does not match</mat-error>
+                <mat-error *ngIf="signUpForm.controls.confirmedPassword.errors?.required && signUpForm.controls.confirmedPassword.touched">Confirm Password is required </mat-error>
+                <mat-error *ngIf="signUpForm.controls.confirmedPassword.errors?.matching && signUpForm.controls.confirmedPassword.touched"> Confirm Password does not match</mat-error>
             </mat-form-field>
 
             <mat-checkbox class="terms-and-policy-link" formControlName='acceptTerms'>
