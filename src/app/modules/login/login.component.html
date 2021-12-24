@@ -8,20 +8,20 @@
 
             <mat-form-field floatLabel="always">
                 <mat-label>Email Address</mat-label>
-                <input matInput placeholder="pat@example.com" [formControlName]="'email'">
+                <input matInput placeholder="pat@example.com" [formControlName]="'email'" data-cy="login-email">
                 <mat-error *ngIf="signInForm.controls.email.errors?.required">Email is required</mat-error>
                 <mat-error *ngIf="signInForm.controls.email.errors?.email">Email is invalid</mat-error>
             </mat-form-field>
 
             <mat-form-field floatLabel="always">
                 <mat-label>Password</mat-label>
-                <input matInput [type]="'password'" [formControlName]="'password'">
+                <input matInput [type]="'password'" [formControlName]="'password'" data-cy="login-password">
                 <mat-error *ngIf="signInForm.controls.password.errors?.required">Password is required</mat-error>
             </mat-form-field>
 
             <a class="reset-password-link" [routerLink]="'/auth/reset-password'"> Forgot your password? </a>
 
-            <button type="submit" [disabled]="!signInForm.valid"> Sign in </button>
+            <button type="submit" [disabled]="!signInForm.valid" data-cy="login-submit-button"> Sign in </button>
 
             <div class="horisontal-line">
                 <span class="line"></span>
@@ -31,7 +31,7 @@
 
         </form>
         <div class="social-media">
-            <button (click)="loginWithGoogle()"><img src="../../../assets/icons/google-color-icon.svg" alt="google"></button>
+            <button (click)="loginWithGoogle()"><img src="../../../assets/icons/google-color-icon.svg" alt="google" data-cy="login-google-submit-button"></button>
             <button><img src="../../../assets/icons/facebook-color-icon.svg" alt="facebook"></button>
         </div>
         <span class="redirect-to">
