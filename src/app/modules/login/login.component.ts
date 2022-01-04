@@ -63,8 +63,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onSubmitSignIn() {
     this.logIn(this.signInForm.value.email, this.signInForm.value.password);
-    // console.log(this.signInForm.value);
-
   }
   onSubmitSignUp() {
     this.authService.signUp(this.signUpForm.value.email, this.signUpForm.value.password, this.signUpForm.value.name, this.signUpForm.value.age).subscribe(
@@ -86,14 +84,11 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   logIn(email:string, password:string) {
     this.authService.logIn(email, password).subscribe(res=> {
-      console.log(res);
-
+      this.authService.getCustomUser(res)
     },
     error => {
       console.log(error)
     })
-    // this.testAuthService.logIn(false);
-    // this.router.navigate(['/dashboard']);
   }
 
   getErrorMessage(data: string) {

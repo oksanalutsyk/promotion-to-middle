@@ -36,9 +36,16 @@ export class AuthService {
     private router: Router,
     private http: HttpClient
   ) {}
-
-  logOutWithGoogle(): void {
-    this.socialAuthService.signOut();
+  
+  logOut(): void {
+    this.socialAuthService.authState.subscribe(data=> {
+      if(data) {
+        this.socialAuthService.signOut();
+      }
+    })
+    localStorage.removeItem('user');
+    this.router.navigate(['auth']);
+    this.user.next(null)
   }
 
   loginWithGoogle(): void {
@@ -46,6 +53,7 @@ export class AuthService {
       .signIn(GoogleLoginProvider.PROVIDER_ID)
       .then((data) => {
         this.router.navigate(['/dashboard']);
+        this.user.next(data)
       })
       .catch((err) => {
         console.log(err);
@@ -53,21 +61,38 @@ export class AuthService {
   }
 
   getUser(): void {
-    if (this.socialAuthService.authState) {
+    if (this.socialAuthService.authState ) {
       this.socialAuthService.authState.subscribe((user: SocialUser) => {
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));
           let authUser = JSON.parse(localStorage.getItem('user') || '');
           this.user.next(authUser);
+          this.router.navigate(['/dashboard']);
         } else {
-          this.user.next(null);
+          if(!localStorage.getItem('user')) {
+            this.user.next(null);
+          }
         }
       });
     } else {
-      this.user.next(null);
+      if(!localStorage.getItem('user')) {
+        this.user.next(null);
+      }
     }
   }
 
+  getCustomUser(user:any):void {
+    if (user) {
+      localStorage.setItem('user', JSON.stringify(user));
+      let authUser = JSON.parse(localStorage.getItem('user') || '');
+      this.user.next(authUser);
+      this.router.navigate(['/dashboard']);
+    } else {
+
+      this.user.next(null);
+    }
+  }
+ 
   signUp(email: string, password: string, name: string, age: string) {
     return this.http.post<AuthResponseData>(
       'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
