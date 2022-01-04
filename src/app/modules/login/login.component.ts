@@ -60,6 +60,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   loginWithGoogle(): void {
     this.authService.loginWithGoogle();
   }
+  loginWithFacebook():void {
+    this.authService.loginWithFacebook();
+
+  }
 
   onSubmitSignIn() {
     this.logIn(this.signInForm.value.email, this.signInForm.value.password);

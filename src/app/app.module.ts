@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,7 @@ import { LoginModule } from './modules/login/login.module';
 import { AppComponent } from './app.component';
 
 const GOOGLE_CLIENT_ID = '974582432978-h36rta581tipa8jgkt1tvtuff8epogq7.apps.googleusercontent.com';
+const FACEBOOK_APP_ID = '237468001880695'
 
 @NgModule({
   declarations: [
@@ -38,6 +39,10 @@ const GOOGLE_CLIENT_ID = '974582432978-h36rta581tipa8jgkt1tvtuff8epogq7.apps.goo
             provider: new GoogleLoginProvider(
               GOOGLE_CLIENT_ID
             )
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider(FACEBOOK_APP_ID)
           }
         ]
       } as SocialAuthServiceConfig,

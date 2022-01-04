@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 import {
+  FacebookLoginProvider,
   GoogleLoginProvider,
   SocialAuthService,
   SocialUser,
@@ -60,6 +61,16 @@ export class AuthService {
       .catch((err) => {
         console.log(err);
       });
+  }
+  loginWithFacebook():void {
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID)
+    .then((data) => {
+      this.router.navigate(['/dashboard']);
+      this.user.next(data)
+    })
+    .catch((err) => {
+      console.log(err);
+    });;
   }
 
   getUser(): void {
