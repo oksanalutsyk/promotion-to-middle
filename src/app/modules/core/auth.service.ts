@@ -83,12 +83,8 @@ export class AuthService {
 
   getCustomUser(user:any):void {
     if (user) {
-      localStorage.setItem('user', JSON.stringify(user));
-      let authUser = JSON.parse(localStorage.getItem('user') || '');
-      this.user.next(authUser);
-      this.router.navigate(['/dashboard']);
+      this.fetchUsersFromDB(user)
     } else {
-
       this.user.next(null);
     }
   }
@@ -121,10 +117,23 @@ export class AuthService {
   }
 
   addUserToDB(user:any, id:string) {
-    return this.http.post('https://promotion-project-d76e8-default-rtdb.firebaseio.com/users.json', {id:id,...user}).subscribe((response) => {
-    });
+    return this.http.post('https://promotion-project-d76e8-default-rtdb.firebaseio.com/users.json', {id:id,...user})
   }
 
 
+  fetchUsersFromDB(data:any):any {
+    return this.http.get('https://promotion-project-d76e8-default-rtdb.firebaseio.com/users.json')
+    .subscribe((response:any)=>{
+      for (var key in response) {
+        if(response[key].id===data.localId) {
+          let user = {...response[key], ...data}
+          localStorage.setItem('user', JSON.stringify(user));
+          let authUser = JSON.parse(localStorage.getItem('user') || '');
+          this.user.next(authUser);
+          this.router.navigate(['/dashboard']);
+        }
+      }
+    })
+  }
 
 }
