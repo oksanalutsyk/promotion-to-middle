@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
 
   userName = '';
-  userAvatar = '';
+  userAvatar: string | null = null;
 
   constructor(private authService: AuthService) {}
 
@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       (user: SocialUser | null) => {
         if (user) {
           this.userName = user?.name;
-          this.userAvatar = user?.photoUrl;
+          this.userAvatar = user?.photoUrl ? user?.photoUrl : '/assets/avatar.png';
         }
       }
     );
