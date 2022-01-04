@@ -57,12 +57,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     })
   }
 
-  loginWithGoogle(): void {
-    this.authService.loginWithGoogle();
-  }
-  loginWithFacebook():void {
-    this.authService.loginWithFacebook();
-
+  loginWithSocialMedia(socialMedia:string):void {
+    this.authService.loginWithSocialMedia(socialMedia)
   }
 
   onSubmitSignIn() {

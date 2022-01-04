@@ -39,42 +39,36 @@ export class AuthService {
     private router: Router,
     private http: HttpClient
   ) {}
-  
+
   logOut(): void {
-    this.socialAuthService.authState.subscribe(data=> {
-      if(data) {
+    this.socialAuthService.authState.subscribe((data) => {
+      if (data) {
         this.socialAuthService.signOut();
       }
-    })
+    });
     localStorage.removeItem('user');
     this.router.navigate(['auth']);
-    this.user.next(null)
+    this.user.next(null);
   }
 
-  loginWithGoogle(): void {
+  loginWithSocialMedia(socialMedia: string): void {
     this.socialAuthService
-      .signIn(GoogleLoginProvider.PROVIDER_ID)
+      .signIn(
+        socialMedia === 'google' ? GoogleLoginProvider.PROVIDER_ID
+          : socialMedia === 'facebook' ? FacebookLoginProvider.PROVIDER_ID
+          : ''
+      )
       .then((data) => {
         this.router.navigate(['/dashboard']);
-        this.user.next(data)
+        this.user.next(data);
       })
       .catch((err) => {
         console.log(err);
       });
   }
-  loginWithFacebook():void {
-    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID)
-    .then((data) => {
-      this.router.navigate(['/dashboard']);
-      this.user.next(data)
-    })
-    .catch((err) => {
-      console.log(err);
-    });;
-  }
 
   getUser(): void {
-    if (this.socialAuthService.authState ) {
+    if (this.socialAuthService.authState) {
       this.socialAuthService.authState.subscribe((user: SocialUser) => {
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));
@@ -82,26 +76,26 @@ export class AuthService {
           this.user.next(authUser);
           this.router.navigate(['/dashboard']);
         } else {
-          if(!localStorage.getItem('user')) {
+          if (!localStorage.getItem('user')) {
             this.user.next(null);
           }
         }
       });
     } else {
-      if(!localStorage.getItem('user')) {
+      if (!localStorage.getItem('user')) {
         this.user.next(null);
       }
     }
   }
 
-  getCustomUser(user:AuthResponseData):void {
+  getCustomUser(user: AuthResponseData): void {
     if (user) {
-      this.fetchUsersFromDB(user)
+      this.fetchUsersFromDB(user);
     } else {
       this.user.next(null);
     }
   }
- 
+
   signUp(email: string, password: string, name: string, age: string) {
     return this.http.post<AuthResponseData>(
       'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
@@ -128,24 +122,28 @@ export class AuthService {
     );
   }
 
-  addUserToDB(user:CustomUser, id:string) {
-    return this.http.post('https://promotion-project-d76e8-default-rtdb.firebaseio.com/users.json', {id:id,...user})
+  addUserToDB(user: CustomUser, id: string) {
+    return this.http.post(
+      'https://promotion-project-d76e8-default-rtdb.firebaseio.com/users.json',
+      { id: id, ...user }
+    );
   }
 
-
-  fetchUsersFromDB(data:AuthResponseData): void{
-   this.http.get('https://promotion-project-d76e8-default-rtdb.firebaseio.com/users.json')
-    .subscribe((response:any)=>{
-      for (var key in response) {
-        if(response[key].id===data.localId) {
-          let user = {...response[key], ...data}
-          localStorage.setItem('user', JSON.stringify(user));
-          let authUser = JSON.parse(localStorage.getItem('user') || '');
-          this.user.next(authUser);
-          this.router.navigate(['/dashboard']);
+  fetchUsersFromDB(data: AuthResponseData): void {
+    this.http
+      .get(
+        'https://promotion-project-d76e8-default-rtdb.firebaseio.com/users.json'
+      )
+      .subscribe((response: any) => {
+        for (var key in response) {
+          if (response[key].id === data.localId) {
+            let user = { ...response[key], ...data };
+            localStorage.setItem('user', JSON.stringify(user));
+            let authUser = JSON.parse(localStorage.getItem('user') || '');
+            this.user.next(authUser);
+            this.router.navigate(['/dashboard']);
+          }
         }
-      }
-    })
+      });
   }
-
 }
