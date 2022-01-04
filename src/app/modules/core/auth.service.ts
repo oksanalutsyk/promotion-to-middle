@@ -10,6 +10,8 @@ import {
 } from 'angularx-social-login';
 import { HttpClient } from '@angular/common/http';
 
+import { CustomUser } from './interfaces/custom-user';
+
 export interface AuthResponseData {
   idToken: string;
   email: string;
@@ -81,7 +83,7 @@ export class AuthService {
     }
   }
 
-  getCustomUser(user:any):void {
+  getCustomUser(user:AuthResponseData):void {
     if (user) {
       this.fetchUsersFromDB(user)
     } else {
@@ -104,7 +106,6 @@ export class AuthService {
   }
 
   logIn(email: string, password: string) {
-
     return this.http.post<AuthResponseData>(
       'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' +
         this.firebaseAPIKey,
@@ -116,13 +117,13 @@ export class AuthService {
     );
   }
 
-  addUserToDB(user:any, id:string) {
+  addUserToDB(user:CustomUser, id:string) {
     return this.http.post('https://promotion-project-d76e8-default-rtdb.firebaseio.com/users.json', {id:id,...user})
   }
 
 
-  fetchUsersFromDB(data:any):any {
-    return this.http.get('https://promotion-project-d76e8-default-rtdb.firebaseio.com/users.json')
+  fetchUsersFromDB(data:AuthResponseData): void{
+   this.http.get('https://promotion-project-d76e8-default-rtdb.firebaseio.com/users.json')
     .subscribe((response:any)=>{
       for (var key in response) {
         if(response[key].id===data.localId) {
