@@ -12,6 +12,7 @@ import {
 import { HttpClient } from '@angular/common/http';
 
 import { CustomUser } from './interfaces/custom-user';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 export interface AuthResponseData {
   idToken: string;
@@ -37,7 +38,8 @@ export class AuthService {
   constructor(
     private socialAuthService: SocialAuthService,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private afAuth: AngularFireAuth
   ) {}
 
   logOut(): void {
@@ -145,5 +147,13 @@ export class AuthService {
           }
         }
       });
+  }
+
+  resetPassword(email:string): void {
+    this.afAuth.sendPasswordResetEmail(email)
+    .then(() => console.log('sent Password Reset Email!'))
+    .then(()=> {
+    })
+    .catch((error) => console.log(error))
   }
 }

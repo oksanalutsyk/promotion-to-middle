@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   onSubmitSignUp() {
     this.authService.signUp(this.signUpForm.value.email, this.signUpForm.value.password, this.signUpForm.value.name, this.signUpForm.value.age).subscribe(
     res=> {
-      this.authService.addUserToDB(this.signUpForm.value, res.localId )
+      this.authService.addUserToDB(this.signUpForm.value, res.localId ).subscribe()
       this.signUpForm.reset()
     },
     error => {
@@ -80,6 +80,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onSubmitResetPassword() {
     console.log(this.resetPasswordForm.value);
+    this.authService.resetPassword(this.resetPasswordForm.value.email);
+    this.resetPasswordForm.reset()
   }
 
   logIn(email:string, password:string) {
