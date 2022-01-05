@@ -1,3 +1,141 @@
-<p>login works!</p>
+<!-- LOGIN -->
+<section class="login-page" *ngIf="isCurrentRoute('/auth/login')">
+    <div class="img"></div>
+    <div class="form">
+        <form [formGroup]="signInForm" (ngSubmit)="onSubmitSignIn()">
+            <h3 class="title">Welcome back</h3>
+            <span class="sub-title">Sign in to manage your account.</span>
 
-<button (click)="logIn()">LOGIN</button>
+            <mat-form-field floatLabel="always">
+                <mat-label>Email Address</mat-label>
+                <input matInput placeholder="pat@example.com" [formControlName]="'email'">
+                <mat-error *ngIf="signInForm.controls.email.errors?.required">Email is required</mat-error>
+                <mat-error *ngIf="signInForm.controls.email.errors?.email">Email is invalid</mat-error>
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="'password'" [formControlName]="'password'">
+                <mat-error *ngIf="signInForm.controls.password.errors?.required">Password is required</mat-error>
+            </mat-form-field>
+
+            <a class="reset-password-link" [routerLink]="'/auth/reset-password'"> Forgot your password? </a>
+
+            <button type="submit" [disabled]="!signInForm.valid"> Sign in </button>
+
+            <div class="horisontal-line">
+                <span class="line"></span>
+                <span class="text">Or do it via other accounts</span>
+                <span class="line"></span>
+            </div>
+
+        </form>
+        <div class="social-media">
+            <button (click)="loginWithSocialMedia('google')"><img src="/assets/icons/google-color-icon.svg" alt="google"></button>
+            <button (click)="loginWithSocialMedia('facebook')"><img src="/assets/icons/facebook-color-icon.svg" alt="facebook"></button>
+        </div>
+        <span class="redirect-to">
+            <span class="info">Don’t have an account? </span>
+            <span class="link" [routerLink]="'/auth/signup'"> Sign Up</span>
+        </span>
+    </div>
+
+</section>
+
+<!-- SIGN UP -->
+<section class="signup-page" *ngIf="isCurrentRoute('/auth/signup')">
+
+    <div class="img"></div>
+    <div class="form">
+        <form [formGroup]="signUpForm" (ngSubmit)="onSubmitSignUp()">
+            <h3 class="title">Get started today</h3>
+            <span class="sub-title">Enter your details to create super account.</span>
+
+            <div class="horisontal-container">
+                <mat-form-field floatLabel="always">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Enter your name" formControlName='name'>
+                    <mat-error *ngIf="signUpForm.controls.name.errors?.required && signUpForm.controls.name.touched">Name is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always">
+                    <mat-label>Age</mat-label>
+                    <input matInput placeholder="Enter your age" formControlName='age'>
+                    <mat-error *ngIf="signUpForm.controls.age.errors?.required && signUpForm.controls.age.touched">Age is required</mat-error>
+                </mat-form-field>
+            </div>
+            <mat-form-field floatLabel="always">
+                <mat-label>Email Address</mat-label>
+                <input matInput placeholder="Enter your email" formControlName='email'>
+                <mat-error *ngIf="signUpForm.controls.email.errors?.required && signUpForm.controls.email.touched">Email is required</mat-error>
+                <mat-error *ngIf="signUpForm.controls.email.errors?.email && signUpForm.controls.email.touched">Email is invalid</mat-error>
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" class="isHint">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="'password'" placeholder="Enter your password" formControlName='password'>
+                <mat-hint>Must be 8 characters long at least</mat-hint>
+                <mat-error *ngIf="signUpForm.controls.password.errors?.required && signUpForm.controls.password.touched">Password is required</mat-error>
+                <mat-error *ngIf="signUpForm.controls.password.errors?.minlength && signUpForm.controls.password.touched">Password must be at least 8 characters</mat-error>
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always">
+                <mat-label>Confirm New Password</mat-label>
+                <input matInput [type]="'password'" placeholder="Enter your new password again" formControlName='confirmedPassword'>
+                <mat-error *ngIf="signUpForm.controls.confirmedPassword.errors?.required && signUpForm.controls.confirmedPassword.touched">Confirm Password is required </mat-error>
+                <mat-error *ngIf="signUpForm.controls.confirmedPassword.errors?.matching && signUpForm.controls.confirmedPassword.touched"> Confirm Password does not match</mat-error>
+            </mat-form-field>
+
+            <mat-checkbox class="terms-and-policy-link" formControlName='acceptTerms'>
+                <span>
+                    <span class="info">I agree to Product </span>
+                    <span class="link" [routerLink]="'/terms-and-policy'"> Terms and Policy.</span>
+                </span>
+                <mat-error *ngIf="signUpForm.controls.acceptTerms.touched && signUpForm.controls.acceptTerms.errors"> Accept Terms is required</mat-error>
+            </mat-checkbox>
+
+            <button type="submit" [disabled]="!signUpForm.valid"> Get started now </button>
+
+            <div class="horisontal-line">
+                <span class="line"></span>
+                <span class="text">Or sign up with</span>
+                <span class="line"></span>
+            </div>
+        </form>
+
+        <div class="social-media">
+            <button><img src="/assets/icons/google-color-icon.svg" alt="google"></button>
+            <button><img src="/assets/icons/facebook-color-icon.svg" alt="facebook"></button>
+        </div>
+
+        <span class="redirect-to">
+            <span class="info">Already have an account? </span>
+            <span class="link" [routerLink]="'/auth'"> Login</span>
+        </span>
+    </div>
+
+</section>
+
+
+<!-- RESET PASSWORD -->
+<section class="reset-password-page" *ngIf="isCurrentRoute('/auth/reset-password')">
+
+    <div class="img"></div>
+    <div class="form">
+        <form [formGroup]="resetPasswordForm" (ngSubmit)="onSubmitResetPassword()">
+            <h3 class="title">Password recovery</h3>
+            <span class="sub-title">Enter the email you're using for your account.</span>
+
+            <mat-form-field floatLabel="always">
+                <mat-label>Email Address</mat-label>
+                <input matInput placeholder="Enter your email" formControlName='email'>
+                <mat-error *ngIf="resetPasswordForm.controls.email.errors?.required">Email is required</mat-error>
+                <mat-error *ngIf="resetPasswordForm.controls.email.errors?.email">Email is invalid</mat-error>
+            </mat-form-field>
+
+            <button type="submit" [disabled]="!resetPasswordForm.valid"> Get started now </button>
+            <button type="button" class="transparent" [routerLink]="'/auth'">Back to Login</button>
+
+        </form>
+    </div>
+</section>

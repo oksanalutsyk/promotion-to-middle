@@ -36,6 +36,13 @@ header {
       background-color: transparent;
       img {
         margin-right: 16px;
+        width: 48px;
+        border-radius: 100%;
+        border: 2px solid transparent;
+        &.isMenuOpen {
+          border: 2px solid rgba(76, 111, 255, 0.4);
+        }
+      
       }
       .user-name {
         margin-right: 25px;

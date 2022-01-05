@@ -7,8 +7,8 @@
 
     <div class="user">
         <button mat-button [matMenuTriggerFor]="menu" class="user-menu" #t="matMenuTrigger">
-            <img src="../../../../../assets/user.png" alt="user">
-            <span class="user-name" [ngClass]="{'isMenuOpen': t.menuOpen}">Annette Black</span>
+            <img [ngClass]="{'isMenuOpen': t.menuOpen}" [src]="userAvatar" alt="user">
+            <span class="user-name" [ngClass]="{'isMenuOpen': t.menuOpen}">{{userName}}</span>
             <mat-icon>expand_more</mat-icon>
 
         </button>
