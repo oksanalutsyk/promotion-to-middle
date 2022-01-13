@@ -161,7 +161,7 @@ mat-hint {
 
 // mat-select
 .cdk-overlay-pane {
-  top: 135px !important;
+  top: 155px !important;
 }
 
 .mat-select-panel {
@@ -181,4 +181,19 @@ mat-hint {
 
 .mat-select-arrow {
   opacity: 0 !important;
+}
+mat-icon {
+ &.isSortSelect {
+   padding-left: 10px;
+   &::before {
+     content: "";
+     height: 40px;
+     display: inline-block;
+     border-left: 1px solid #E7E9F0;
+     position: absolute;
+     top: -8px;
+
+   }
+ }
+
 }
