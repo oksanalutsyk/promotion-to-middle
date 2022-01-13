@@ -1,0 +1,27 @@
+<section class="dashboard-header">
+  <div class="left-block">
+    <h3 class="title">Articles Dashboard</h3>
+    <div class="filter-block" [ngClass]="{'isSelectOpen': filterSelect.panelOpen}">
+      <span class="title">Show:</span>
+      <form [formGroup]="filterForm">
+        <mat-form-field>
+          <mat-select [formControl]="filterControl" disableOptionCentering #filterSelect
+                      (selectionChange)="changeFilterValue($event.value)">
+            <mat-option *ngFor="let filter of filters" [value]="filter.value">
+              {{filter.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-icon matSuffix>expand_more</mat-icon>
+        </mat-form-field>
+      </form>
+
+    </div>
+  </div>
+  <div class="sort-block">
+    <h3 class="title">Articles Dashboard</h3>
+  </div>
+  <h3 class="title">Articles Dashboard</h3>
+</section>
+
+
+
