@@ -54,5 +54,25 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $white-color;
+      background-color: $primary-color;
+      border-radius: 3px;
+      padding: 10px 20px;
+      width: max-content;
+      transition: 0.5s;
+      &:hover {
+        color: $primary-color;
+        background-color: rgba(46, 91, 255, 0.04);
+        transition: 0.5s;
+      }
+      &:disabled {
+        color: $inactive-state-color;
+        background-color: $input-color;
+      }
+    }
   }
 }
