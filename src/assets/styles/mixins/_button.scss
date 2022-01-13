@@ -1,0 +1,47 @@
+@import "../variables";
+
+@mixin button {
+  button {
+    &.primary {
+      color: $white-color;
+      background-color: $primary-color;
+      border-radius: 3px;
+      transition: 0.5s;
+
+      &:hover {
+        color: $primary-color;
+        background-color: rgba(46, 91, 255, 0.04);
+        transition: 0.5s;
+      }
+
+      &:disabled {
+        color: $inactive-state-color;
+        background-color: $input-color;
+      }
+
+      &.small {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px;
+        width: max-content;
+      }
+
+      &.big {
+        padding: 16px;
+        width: 100%;
+      }
+    }
+
+    &.transparent {
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 19px;
+      color: $primary-color;
+      margin-bottom: 15px;
+      background-color: transparent;
+    }
+  }
+
+}

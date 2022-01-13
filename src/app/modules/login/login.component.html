@@ -21,7 +21,7 @@
 
             <a class="reset-password-link" [routerLink]="'/auth/reset-password'"> Forgot your password? </a>
 
-            <button type="submit" [disabled]="!signInForm.valid"> Sign in </button>
+            <button type="submit" class="primary big" [disabled]="!signInForm.valid"> Sign in </button>
 
             <div class="horisontal-line">
                 <span class="line"></span>
@@ -94,7 +94,7 @@
                 <mat-error *ngIf="signUpForm.controls.acceptTerms.touched && signUpForm.controls.acceptTerms.errors"> Accept Terms is required</mat-error>
             </mat-checkbox>
 
-            <button type="submit" [disabled]="!signUpForm.valid"> Get started now </button>
+            <button type="submit" class="primary big" [disabled]="!signUpForm.valid"> Get started now </button>
 
             <div class="horisontal-line">
                 <span class="line"></span>
@@ -133,7 +133,7 @@
                 <mat-error *ngIf="resetPasswordForm.controls.email.errors?.email">Email is invalid</mat-error>
             </mat-form-field>
 
-            <button type="submit" [disabled]="!resetPasswordForm.valid"> Get started now </button>
+            <button type="submit" class="primary big" [disabled]="!resetPasswordForm.valid"> Get started now </button>
             <button type="button" class="transparent" [routerLink]="'/auth'">Back to Login</button>
 
         </form>
