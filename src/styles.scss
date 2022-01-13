@@ -120,9 +120,12 @@ input.mat-input-element {
   border-top: none !important;
 }
 
-.mat-form-field-flex {
-  width: 110px !important;
+app-dashboard {
+  .mat-form-field-flex {
+    width: 110px !important;
+  }
 }
+
 
 //mat-check-box
 .mat-checkbox-inner-container {
