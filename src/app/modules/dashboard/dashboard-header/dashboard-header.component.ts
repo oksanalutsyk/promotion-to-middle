@@ -48,7 +48,4 @@ export class DashboardHeaderComponent implements OnInit {
     console.log("Change sort value", value)
   }
 
-  addArticle():void {
-    console.log("Add new article")
-  }
 }

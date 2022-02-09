@@ -27,7 +27,7 @@ input:-webkit-autofill:active {
   -webkit-text-fill-color: $secondary-text-color !important;
 }
 
-input.mat-input-element {
+input.mat-input-element, textarea.mat-input-element  {
   padding: 18px 30px 18px 30px;
   margin-top: 5px;
   box-sizing: border-box;
