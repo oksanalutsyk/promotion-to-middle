@@ -135,3 +135,94 @@ mat-icon {
   }
 
 }
+
+
+//mat-card (article)
+
+.mat-card {
+  border-radius: 6px!important;
+  background: white;
+  width: 370px;
+
+  position: relative;
+  z-index: 1;
+}
+
+
+mat-card-subtitle {
+  font-size: 13px;
+  line-height: 19px;
+  color: #6E798C;
+  display: flex;
+  justify-content: space-between;
+}
+
+mat-card-title {
+  font-weight: 500;
+  font-size: 21px;
+  line-height: 25px;
+  color: #081F32;
+}
+
+mat-card-content {
+  p {
+    font-size: 13px;
+    line-height: 19px;
+    color: #374A59;
+
+    //ellipsis
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding: 0 !important;
+
+  .user {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    line-height: 19px;
+    cursor: pointer;
+
+    color: #4C6FFF;
+
+    img {
+      width: 32px;
+      margin-right: 8px;
+    }
+  }
+
+  button {
+    color: #4C6FFF;
+    display: flex;
+    align-items: center;
+    background: transparent;
+
+    span {
+      font-weight: 500;
+      font-size: 11px;
+      line-height: 13px;
+    }
+
+    mat-icon {
+      font-size: 16px;
+      height: auto !important;
+    }
+
+  }
+}
+
+
+//mat-menu
+.mat-menu-item:hover:not([disabled]){
+  background: #F4F6FF!important;
+  color: #1943EF!important;
+}

@@ -1,0 +1,38 @@
+<mat-card class="article">
+  <button mat-icon-button class="three-dots" [ngClass]="{'isMenuOpen': t.menuOpen}"
+          #t="matMenuTrigger" [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+  <div class="img">
+    <img mat-card-image src="/assets/article-img.png" alt="background">
+    <img class="laptop" src="/assets/laptop-img.png" alt="laptop">
+  </div>
+
+  <mat-card-subtitle>
+    <span class="category">PRODUCTIVITY</span>
+    <span class="date">3 days ago</span>
+  </mat-card-subtitle>
+  <mat-card-title>7 Skills of Highly Effective Programmers</mat-card-title>
+  <mat-card-content>
+    <p>Our team was inspired by the seven skills of highly effective programmers created by the TechLead. We wanted to
+      provide our own take on the topic. Our team was inspired by the seven skills of highly effective programmers
+      created by the TechLead. We wanted to provide our own take on the topic</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <div mat-button class="user">
+      <img [src]="userAvatar" alt="user">
+      <span class="user-name">{{userName}}</span>
+    </div>
+    <button>
+      <span>Read more</span>
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+
+<mat-menu #menu="matMenu" xPosition="before">
+  <button mat-menu-item (click)="editArticle()"><span>Edit</span></button>
+  <button mat-menu-item (click)="deleteArticle()"><span>Delete</span></button>
+</mat-menu>
