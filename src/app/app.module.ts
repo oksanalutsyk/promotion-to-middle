@@ -12,6 +12,7 @@ import { GoogleLoginProvider } from 'angularx-social-login';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './modules/core/core.module';
 import { LoginModule } from './modules/login/login.module';
+import { DashboardModule } from "./modules/dashboard/dashboard.module";
 
 import { AppComponent } from './app.component';
 
@@ -38,6 +39,7 @@ const FIREBASE_CONFIG = {
     AppRoutingModule,
     BrowserAnimationsModule,
     CoreModule,
+    DashboardModule,
     LoginModule,
     SocialLoginModule,
     HttpClientModule,
