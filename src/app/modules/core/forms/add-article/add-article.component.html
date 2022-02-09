@@ -1,0 +1,23 @@
+<section class="add-article">
+  <h3 class="title">Add new article</h3>
+  <div class="horisontal-line"></div>
+
+  <form [formGroup]="addArticleForm" (ngSubmit)="onSubmitAddArticle()">
+    <mat-form-field floatLabel="always">
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="Enter your title" formControlName='title'>
+      <mat-error >Title is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always">
+      <mat-label>Text</mat-label>
+      <textarea matInput placeholder="Enter your text" formControlName='text'></textarea>
+    </mat-form-field>
+
+    <h3 class="img-title">Add cover photo</h3>
+    <h4 class="img-sub-title">Drag and drop file below</h4>
+
+  </form>
+
+
+</section>
