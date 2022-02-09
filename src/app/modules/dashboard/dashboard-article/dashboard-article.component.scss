@@ -1,0 +1,40 @@
+@import "../../../../assets/styles/material";
+
+.article {
+  .three-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    z-index: 2;
+    right: 5px;
+    top: 5px;
+    mat-icon {
+      color: white;
+      transform: rotate(90deg);
+    }
+
+    &.isMenuOpen {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+  .img {
+    position: relative;
+
+    img {
+      &.laptop {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin-top: -16px;
+      }
+    }
+
+  }
+
+
+
+
+}
