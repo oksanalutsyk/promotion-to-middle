@@ -8,6 +8,7 @@ import { TermsAndPolicyComponent } from './modules/core/components/terms-and-pol
 //guards
 import { AuthGuard } from './modules/core/guards/auth.guard';
 import { InnerPageGuard } from './modules/core/guards/inner-page.guard';
+import { AddArticleComponent } from "./modules/core/forms/add-article/add-article.component";
 
 const routes: Routes = [
   {
@@ -31,6 +32,11 @@ const routes: Routes = [
     path: 'terms-and-policy',
     component: TermsAndPolicyComponent,
   },
+  {
+    path: 'add-article',
+    component: AddArticleComponent,
+  },
+
   { path: '**', redirectTo: 'auth' },
 
 ];
