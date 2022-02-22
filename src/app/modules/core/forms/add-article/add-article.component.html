@@ -6,16 +6,57 @@
     <mat-form-field floatLabel="always">
       <mat-label>Title</mat-label>
       <input matInput placeholder="Enter your title" formControlName='title'>
-      <mat-error >Title is required</mat-error>
+      <mat-error>Title is required</mat-error>
     </mat-form-field>
 
     <mat-form-field floatLabel="always">
       <mat-label>Text</mat-label>
-      <textarea matInput placeholder="Enter your text" formControlName='text'></textarea>
+      <textarea matInput placeholder="Enter your text" formControlName='text' ></textarea>
     </mat-form-field>
 
     <h3 class="img-title">Add cover photo</h3>
     <h4 class="img-sub-title">Drag and drop file below</h4>
+
+    <div class="img-uploader">
+      <div
+        class="drop-container"
+        ngFileDrop
+        [options]="options"
+        (uploadOutput)="onUploadOutput($event)"
+        [uploadInput]="uploadInput"
+        [ngClass]="{ 'is-drop-over': dragOver }"
+      >
+        <label class="upload-button">
+          <input class="input"
+                 type="file"
+                 ngFileSelect
+                 [options]="options"
+                 (uploadOutput)="onUploadOutput($event)"
+                 [uploadInput]="uploadInput"
+                 (change)="previewImg($event)"
+                 formControlName='image'
+          />
+
+        </label>
+
+        <button type="button" class="start-upload-btn">
+          Start Upload
+        </button>
+      </div>
+
+
+      <div class="preview" *ngIf="imageSrc !==''">
+        <img  id="img-preview" [src]="imageSrc" alt="your image" />
+        <button (click)="removeFile()"><mat-icon>delete</mat-icon></button>
+      </div>
+
+    </div>
+
+    <div class="buttons">
+      <button class="border small" type="button"> Cancel</button>
+      <button class="primary small" type="submit"> Publish</button>
+    </div>
+
 
   </form>
 
