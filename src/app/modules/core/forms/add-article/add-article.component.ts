@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, ViewChild} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import {humanizeBytes, UploaderOptions, UploadFile, UploadInput, UploadOutput } from 'ngx-uploader';
+import {ArticleService} from "../../article.service";
 
 @Component({
   selector: 'app-add-article',
@@ -21,7 +22,7 @@ export class AddArticleComponent implements OnInit {
 
   data:any= {};
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private articleService: ArticleService) {
     this.addArticleForm = this.formBuilder.group({
       title: ['', [Validators.required]],
       text: ['', [Validators.required]],
@@ -58,8 +59,8 @@ export class AddArticleComponent implements OnInit {
   }
 
   onSubmitAddArticle() {
-    console.log(this.addArticleForm.value);
-
+    // console.log(this.addArticleForm.value);
+    this.articleService.addArticle(this.addArticleForm.value).subscribe(data=> console.log(data));
   }
 
   onUploadOutput(output: UploadOutput ): void {

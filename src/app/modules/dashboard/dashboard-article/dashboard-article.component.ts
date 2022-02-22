@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
+import {ArticleService} from "../../core/article.service";
+import {AngularFirestore} from "@angular/fire/compat/firestore";
 
 @Component({
   selector: 'app-dashboard-article',
   templateUrl: './dashboard-article.component.html',
   styleUrls: ['./dashboard-article.component.scss']
 })
-export class DashboardArticleComponent implements OnInit {
+export class DashboardArticleComponent implements OnInit{
+  @Input('article') article:any;
   userName = '';
   userAvatar: string | null = null;
 
-  constructor() { }
+  constructor(private articleService: ArticleService, public afs:AngularFirestore) { }
 
   ngOnInit(): void {
     this.userAvatar = '/assets/avatar.png';
@@ -20,7 +23,8 @@ export class DashboardArticleComponent implements OnInit {
     console.log('Edit article')
   }
 
-  deleteArticle():void {
-    console.log('Delete article')
+  deleteArticle(id:string):void {
+    this.articleService.deleteArticleByID(id);
+    // console.log('Delete article')
   }
 }
