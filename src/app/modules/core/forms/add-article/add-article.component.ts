@@ -2,6 +2,8 @@ import {Component, EventEmitter, OnInit, ViewChild} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import {humanizeBytes, UploaderOptions, UploadFile, UploadInput, UploadOutput } from 'ngx-uploader';
 import {ArticleService} from "../../article.service";
+import {switchMap} from "rxjs/operators";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-article',
@@ -22,7 +24,7 @@ export class AddArticleComponent implements OnInit {
 
   data:any= {};
 
-  constructor(private formBuilder: FormBuilder, private articleService: ArticleService) {
+  constructor(private formBuilder: FormBuilder, private articleService: ArticleService, private router: Router) {
     this.addArticleForm = this.formBuilder.group({
       title: ['', [Validators.required]],
       text: ['', [Validators.required]],
@@ -59,8 +61,12 @@ export class AddArticleComponent implements OnInit {
   }
 
   onSubmitAddArticle() {
-    // console.log(this.addArticleForm.value);
-    this.articleService.addArticle(this.addArticleForm.value).subscribe(data=> console.log(data));
+    this.articleService.addArticle(this.addArticleForm.value).subscribe(data=> {
+      console.log(data);
+      this.addArticleForm.reset();
+
+      this.router.navigate(['/dashboard'])
+    })
   }
 
   onUploadOutput(output: UploadOutput ): void {

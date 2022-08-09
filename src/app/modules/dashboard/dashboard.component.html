@@ -2,9 +2,7 @@
   <app-dashboard-header></app-dashboard-header>
   <main>
     <div class="dashboard-list">
-      <ng-container *ngIf="allArticles$ | async as articles">
-        <app-dashboard-article *ngFor="let article of articles" [article]="article"></app-dashboard-article>
-      </ng-container>
+      <app-dashboard-article *ngFor="let article of allArticles$ | async" [article]="article"></app-dashboard-article>
     </div>
 
     <div>WIDJET</div>

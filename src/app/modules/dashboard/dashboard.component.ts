@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ArticleService} from "../core/article.service";
+import {switchMap} from "rxjs/operators";
 
 @Component({
   selector: 'app-dashboard',
@@ -8,23 +9,13 @@ import {ArticleService} from "../core/article.service";
 })
 export class DashboardComponent implements OnInit {
 
-  articles:any;
-
-  allArticles$ = this.articleService.$articles;
+  allArticles$ =  this.getAllArticles();
 
   constructor( private articleService:ArticleService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
-    // this.articleService.deleteAllArticles().subscribe();
-
-    // this.articleService.getAllArticles().subscribe();
-    // this.articleService.$articles.subscribe(data=> {
-    //
-    //   console.log('Articles in component', data);
-    //   this.articles = data;
-    //
-    // })
+  getAllArticles() {
+    return this.articleService.getAllArticles();
   }
-
 }

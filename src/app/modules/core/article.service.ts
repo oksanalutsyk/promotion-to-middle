@@ -19,12 +19,8 @@ export class ArticleService {
   addArticle(article:any) {
     const url = 'https://promotion-project-d76e8-default-rtdb.firebaseio.com/articles.json'
     return this.http.post(url, article).pipe(
-      map((data: any) => {
-        this.getAllArticles();
-        return data;
-      }), catchError( error => {
-        return throwError( 'Something went wrong!' );
-      })
+      map(() => true),
+      catchError( error => throwError( 'Something went wrong!' ))
     )
   }
 
@@ -42,7 +38,7 @@ export class ArticleService {
       }), catchError( error => {
         return throwError( 'Something went wrong!' );
       })
-    ).subscribe()
+    )
   }
 
   deleteAllArticles(){
